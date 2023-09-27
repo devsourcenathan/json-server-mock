@@ -5,7 +5,7 @@ var faker = source.faker;
 const seedData = () => {
     // Générer des données factices pour chaque entité
 
-    const entities = Array.from({ length: 100 }, () => ({
+    const entities = Array.from({ length: 12 }, () => ({
         id: faker.string.uuid(),
         fullName: faker.company.name(),
         activity: faker.company.catchPhraseDescriptor(),
@@ -24,7 +24,7 @@ const seedData = () => {
             cash_in: faker.finance.amount(),
             cash_out: faker.finance.amount(),
         },
-        contacts: Array.from({ length: 12 }).map(() => {
+        contacts: Array.from({ length: 4 }).map(() => {
             return {
                 id: faker.string.uuid(),
                 name: faker.person.fullName(),
@@ -42,7 +42,7 @@ const seedData = () => {
                 address: faker.location.country(),
             }
         }),
-        reports: Array.from({ length: 8 }).map(() => {
+        reports: Array.from({ length: 3 }).map(() => {
             return {
                 id: faker.string.uuid(),
                 name: faker.finance.accountName(),
@@ -60,7 +60,7 @@ const seedData = () => {
         previousValue: faker.finance.amount(),
         date: faker.date.recent(),
     }))
-    const documents = Array.from({ length: 100 }, () => ({
+    const documents = Array.from({ length: 12 }, () => ({
         id: faker.string.uuid(),
         type: {
             id: faker.string.uuid(),
@@ -73,7 +73,7 @@ const seedData = () => {
         upload_date: faker.date.recent(),
     })
     )
-    const groups = Array.from({ length: 100 }, () => ({
+    const groups = Array.from({ length: 12 }, () => ({
         id: faker.string.uuid(),
         name: faker.string.fromCharacters(['Invoices', "Reports", "Scan", "Draff"]),
         currency: faker.finance.currencyName(),

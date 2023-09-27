@@ -1,5 +1,5 @@
 const jsonServer = require('json-server')
-const seedData = require("../seedData")
+// const seedData = require("../seedData")
 const routes = require("./routes.json")
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')

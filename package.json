@@ -8,6 +8,5 @@
   },
   "dependencies": {
     "json-server": "^0.17.3",
-    "@faker-js/faker": "^8.0.2"
   }
 }
