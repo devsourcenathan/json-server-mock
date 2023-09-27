@@ -2,10 +2,10 @@
 const jsonServer = require('json-server')
 import routes from "./routes.json"
 const server = jsonServer.create()
-const router = jsonServer.router('db.json')
+const dataSeeder = require("./seeder")
+const router = jsonServer.router(dataSeeder)
 const middlewares = jsonServer.defaults()
 
-// const dataSeeder = require("./seeder")
 
 
 server.use(middlewares)
