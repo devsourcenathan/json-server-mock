@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/server.js": {
-      "memory": 999024,
+      "memory": 3000,
       "includeFiles": "db.json"
     }
   },
