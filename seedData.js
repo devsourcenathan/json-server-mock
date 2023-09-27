@@ -1,33 +1,10 @@
-//import { faker } from '@faker-js/faker';
+const source = require('@faker-js/faker')
 
-module.exports = () => {
+var faker = source.faker;
 
-    const source = require('@faker-js/faker')
-
-    var faker = source.faker;
-
-    const data = {
-        "entities": [],
-        "currencies": [],
-        "documents": [],
-        "groups": [],
-        "accounts": [],
-        "documents_type": [],
-    }
-
-    Array.from({ length: 100 }).forEach(() => {
-        data.corporates.push({
-            id: faker.string.uuid(),
-            title: faker.company.name(),
-            description: faker.company.catchPhraseDescriptor(),
-            date: faker.date.recent(),
-            price: faker.string.numeric(3),
-
-            createdOn: faker.date.past(),
-        })
-    })
-
-    Array.from({ length: 100 }).forEach(() => {
+const seedData = () => {
+    // Générer des données factices pour chaque entité
+    const entities = Array.from({ length: 100 }).forEach(() => {
         data.entities.push({
             id: faker.string.uuid(),
             fullName: faker.company.name(),
@@ -74,15 +51,10 @@ module.exports = () => {
                     address: faker.location.country(),
                 }
             }),
-            // investies: Array.from({length: 3}).map(() => {
-            //     return {
-            //         id: faker.string.uuid(),
-            //     }
-            // })
         })
     })
 
-    Array.from({ length: 10 }).forEach(() => {
+    const currencies = Array.from({ length: 10 }).forEach(() => {
         data.currencies.push({
             id: faker.string.uuid(),
             name: faker.finance.currencyCode(),
@@ -92,7 +64,7 @@ module.exports = () => {
         })
     })
 
-    Array.from({ length: 100 }).forEach(() => {
+    const documents = Array.from({ length: 100 }).forEach(() => {
         data.documents.push({
             id: faker.string.uuid(),
             type: {
@@ -107,7 +79,7 @@ module.exports = () => {
         })
     })
 
-    Array.from({ length: 100 }).forEach(() => {
+    const groups = Array.from({ length: 100 }).forEach(() => {
         data.groups.push({
             id: faker.string.uuid(),
             name: faker.string.fromCharacters(['Invoices', "Reports", "Scan", "Draff"]),
@@ -119,7 +91,7 @@ module.exports = () => {
         })
     })
 
-    Array.from({ length: 3 }).forEach(() => {
+    const accounts = Array.from({ length: 3 }).forEach(() => {
         data.accounts.push({
             id: faker.string.uuid(),
             iban: faker.finance.iban(),
@@ -129,7 +101,7 @@ module.exports = () => {
         })
     })
 
-    Array.from({ length: 6 }).forEach(() => {
+    const documentTypes = Array.from({ length: 6 }).forEach(() => {
         data.documents_type.push({
             id: faker.string.uuid(),
             label: faker.string.fromCharacters(['pdf', 'word', 'excel']),
@@ -138,5 +110,16 @@ module.exports = () => {
         })
     })
 
-    return data;
-}
+    // Écrire les données factices dans le fichier `db.json`
+    const fs = require('fs');
+    const db = require('./db.json');
+    db.entities = entities;
+    db.currencies = currencies;
+    db.documents = documents;
+    db.groups = groups;
+    db.accounts = accounts;
+    db.documentTypes = documentTypes;
+    fs.writeFileSync('./db.json', JSON.stringify(db));
+};
+
+seedData();
