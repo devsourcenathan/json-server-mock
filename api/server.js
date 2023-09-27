@@ -1,7 +1,7 @@
 // See https://github.com/typicode/json-server#module
 const jsonServer = require('json-server')
 import routes from "./routes.json"
-import seedData from "../seedData"
+// import seedData from "../seedData"
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
@@ -17,7 +17,7 @@ server.use(jsonServer.rewriter(
 ))
 server.use(router)
 
-seedData()
+// seedData()
 
 server.listen(3000, () => {
     // console.log(dataSeeder);
